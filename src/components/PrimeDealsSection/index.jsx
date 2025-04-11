@@ -24,11 +24,14 @@ const PrimeDealsSection = () => {
     try {
       setApiStatus(apiStatusContants.inProgress);
       const token = Cookies.get("token");
-      const response = await axios.get("http://localhost:5001/prime-deals", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/prime-deals`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       const data = response.data;
       const updatedData = data.map((product) => ({
         title: product.title,

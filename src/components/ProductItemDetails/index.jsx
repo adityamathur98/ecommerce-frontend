@@ -47,12 +47,15 @@ const ProductItemDetails = () => {
       setApiStatus(apiStatusConstants.inProgress);
       const token = Cookies.get("token");
 
-      const response = await axios.get(`http://localhost:5001/product/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        method: "GET",
-      });
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/product/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          method: "GET",
+        }
+      );
       const data = response.data;
       const updatedData = getFormattedData(data);
       const updatedSimilarProductsData = data.similar_products.map(

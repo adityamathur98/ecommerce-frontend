@@ -45,7 +45,7 @@ const LoginForm = () => {
     setIsLoading(true);
     try {
       const userDetails = { username, password };
-      const url = "http://localhost:5001/login";
+      const url = `${import.meta.env.VITE_API_URL}/login`;
       const response = await axios.post(url, userDetails);
       console.log(response);
       if (response.status === 200) {

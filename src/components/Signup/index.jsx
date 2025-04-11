@@ -17,8 +17,9 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log("API URL:", process.env.REACT_APP_API_URL);
       const response = await axios.post(
-        "http://localhost:5001/register",
+        `${import.meta.env.VITE_API_URL}/register`,
         formData,
         { headers: { "Content-Type": "application/json" } }
       );

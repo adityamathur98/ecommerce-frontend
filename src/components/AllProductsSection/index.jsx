@@ -91,7 +91,9 @@ const AllProductsSection = () => {
     const token = Cookies.get("token");
     try {
       const response = await axios.get(
-        `http://localhost:5001/products?sort_by=${activeOptionId}&category=${activeCategoryId}&title_search=${searchInput}&rating=${activeRatingId}`,
+        `${
+          import.meta.env.VITE_API_URL
+        }/products?sort_by=${activeOptionId}&category=${activeCategoryId}&title_search=${searchInput}&rating=${activeRatingId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
